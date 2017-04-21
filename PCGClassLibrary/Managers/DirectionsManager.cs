@@ -10,11 +10,11 @@
         private IDirection down;
         private IDirection right;
         private IDirection left;
-        private Stack<IDirection> directionsHistory;
+        private Queue<IDirection> directionsHistory;
 
         public DirectionsManager()
         {
-            this.directionsHistory = new Stack<IDirection>();
+            this.directionsHistory = new Queue<IDirection>();
         }
 
         public IDirection GetDirection(string userChoice)
@@ -57,13 +57,18 @@
                 default:
                     if (this.directionsHistory.Count == 0)
                     {
-                        this.directionsHistory.Push(new Right());
+                        this.directionsHistory.Enqueue(new Right());
                     }
 
                     return this.directionsHistory.Peek();
             }
 
-            this.directionsHistory.Push(result);
+            this.directionsHistory.Enqueue(result);
+            if (directionsHistory.Count > 1)
+            {
+                directionsHistory.Dequeue();
+            }
+
             return result;
         }
 
