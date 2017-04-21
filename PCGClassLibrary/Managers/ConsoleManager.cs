@@ -23,11 +23,10 @@
             {
                 throw new ArgumentNullException("gameSounds");
             }
-
-            var cursorPositions = this.SetCursorPositions(descriptionLines);
+            
             this.PrintWelcomeLine(welcomeLine);
             gameSounds.PlaySound("typewriter.wav");
-            this.PrintGameDescription(descriptionLines, cursorPositions);
+            this.PrintGameDescription(descriptionLines);
         }
 
         public void ReadCarInfo(ICar policeCar)
@@ -223,8 +222,9 @@
             return playerChoice;
         }
 
-        private void PrintGameDescription(IList<string> descriptionLines, IList<IPosition> cursorPositions)
+        private void PrintGameDescription(IList<string> descriptionLines)
         {
+            var cursorPositions = this.SetCursorPositions(descriptionLines);
             for (int i = 0; i < descriptionLines.Count; i++)
             {
                 Console.SetCursorPosition(cursorPositions[i].XCoordinate, cursorPositions[i].YCoordinate);
