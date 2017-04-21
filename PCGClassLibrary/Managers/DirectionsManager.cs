@@ -55,18 +55,13 @@
                     result = this.left;
                     break;
                 default:
-                    if (this.directionsHistory.Count == 0)
-                    {
-                        this.directionsHistory.Enqueue(new Right());
-                    }
-
                     return this.directionsHistory.Peek();
             }
 
             this.directionsHistory.Enqueue(result);
-            if (directionsHistory.Count > 1)
+            if (this.directionsHistory.Count > 1)
             {
-                directionsHistory.Dequeue();
+                this.directionsHistory.Dequeue();
             }
 
             return result;
