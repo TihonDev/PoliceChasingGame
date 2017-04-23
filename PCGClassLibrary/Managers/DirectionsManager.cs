@@ -57,7 +57,7 @@
                 default:
                     if (this.directionsHistory.Count == 0)
                     {
-                        directionsHistory.Enqueue(new Right());
+                        this.directionsHistory.Enqueue(new Right());
                     }
 
                     return this.directionsHistory.Peek();
