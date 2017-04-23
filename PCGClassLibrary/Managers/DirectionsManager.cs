@@ -55,6 +55,11 @@
                     result = this.left;
                     break;
                 default:
+                    if (this.directionsHistory.Count == 0)
+                    {
+                        directionsHistory.Enqueue(new Right());
+                    }
+
                     return this.directionsHistory.Peek();
             }
 

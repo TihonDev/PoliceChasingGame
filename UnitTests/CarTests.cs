@@ -12,21 +12,21 @@
     {
         private const int X_MAX_VALUE = 130;
         private const int Y_MAX_VALUE = 30;
-        private Car myCar;
+        private Car policeCar;
         private Criminal criminalGuy;
 
         [OneTimeSetUp]
         public void FixtureInitialize()
         {
             this.criminalGuy = new Criminal(X_MAX_VALUE, Y_MAX_VALUE);
-            this.myCar = new Car(this.criminalGuy, X_MAX_VALUE, Y_MAX_VALUE);
+            this.policeCar = new Car(this.criminalGuy, X_MAX_VALUE, Y_MAX_VALUE);
         }
 
         [OneTimeTearDown]
         public void FixtureCleanup()
         {
             this.criminalGuy = null;
-            this.myCar = null;
+            this.policeCar = null;
         }
 
         [Test]
@@ -44,7 +44,7 @@
         [TestCase("     s")]
         public void BrandPropertySetterShouldThrowInvalidCarBrandExceptionIfValueIsNullEmptyOrTooShort(string brand)
         {
-            Assert.Throws(typeof(InvalidCarBrandException), () => { this.myCar.Brand = brand; }, "Brand property validator does not work correctly.");
+            Assert.Throws(typeof(InvalidCarBrandException), () => { this.policeCar.Brand = brand; }, "Brand property validator does not work correctly.");
         }
 
         [TestCase("     ")]
@@ -53,7 +53,7 @@
         [TestCase(null)]
         public void ModelPropertySetterShouldThrowInvalidCarModelExceptionIfValueIsNullEmptyOrTooShort(string model)
         {
-            Assert.Throws(typeof(InvalidCarModelException), () => { this.myCar.Model = model; }, "Model property validator does not work correctly.");
+            Assert.Throws(typeof(InvalidCarModelException), () => { this.policeCar.Model = model; }, "Model property validator does not work correctly.");
         }
 
         [TestCase(null)]
@@ -64,7 +64,7 @@
         [TestCase("   f    ")]
         public void DriverNamelPropertySetterShouldThrowInvalidCarModelExceptionIfValueIsNullEmptyOrTooShort(string driver)
         {
-            Assert.Throws(typeof(InvalidPlayerNameException), () => { this.myCar.DriverName = driver; }, "DriverName property validator does not work correctly.");
+            Assert.Throws(typeof(InvalidPlayerNameException), () => { this.policeCar.DriverName = driver; }, "DriverName property validator does not work correctly.");
         }
 
         [TestCase(10, 20, 15, 21, "LeftArrow", true)]
@@ -77,14 +77,14 @@
         [TestCase(60, 17, 70, 22, "LeftArrow", false)]
         public void IsCriminalCaughtMethodShouldReturnCorrectResults(int carX, int carY, int criminalX, int criminalY, string direction, bool expectedValue)
         {
-            this.myCar.XCoordinate = carX;
-            this.myCar.YCoordinate = carY;
+            this.policeCar.XCoordinate = carX;
+            this.policeCar.YCoordinate = carY;
             var directionsManager = new DirectionsManager();
-            myCar.Direction = directionsManager.GetDirection(direction);
+            this.policeCar.Direction = directionsManager.GetDirection(direction);
             this.criminalGuy.XCoordinate = criminalX;
             this.criminalGuy.YCoordinate = criminalY;
 
-            Assert.AreEqual(expectedValue, this.myCar.IsCriminalCaught(), "IsCriminalCaught method does not work correctly.");
+            Assert.AreEqual(expectedValue, this.policeCar.IsCriminalCaught(), "IsCriminalCaught method does not work correctly.");
         }
 
         [TestCase(int.MaxValue, int.MaxValue - 20)]
@@ -98,7 +98,7 @@
         [TestCase(1, 1 - 1)]
         public void SpeedUpMethodShouldUpdateThreadSleepTimeCorrectly(int sleepTime, int expectedValue)
         {
-            this.myCar.SpeedUp(ref sleepTime);
+            this.policeCar.SpeedUp(ref sleepTime);
             Assert.AreEqual(expectedValue, sleepTime, "SpeedUp method does not work correctly.");
         }
     }

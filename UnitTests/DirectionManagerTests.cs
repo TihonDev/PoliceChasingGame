@@ -14,13 +14,13 @@
         [OneTimeSetUp]
         public void FixtureInitialize()
         {
-            directionsManager = new DirectionsManager();
+            this.directionsManager = new DirectionsManager();
         }
 
         [OneTimeTearDown]
         public void FixtureCleanup()
         {
-            directionsManager = null;
+            this.directionsManager = null;
         }
 
         [Test]
@@ -31,7 +31,7 @@
                 new KeyValuePair<string, IDirection>("  ", new Right()),
                 new KeyValuePair<string, IDirection>("RightArrow", new Right()),
                 new KeyValuePair<string, IDirection>("LeftArrow", new Left()),
-                new KeyValuePair<string, IDirection>("", new Left()),
+                new KeyValuePair<string, IDirection>(string.Empty, new Left()),
                 new KeyValuePair<string, IDirection>("UpArrow", new Up()),
                 new KeyValuePair<string, IDirection>("DownArrow", new Down()),
                 new KeyValuePair<string, IDirection>("x", new Down()),
