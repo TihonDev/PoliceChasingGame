@@ -2,7 +2,6 @@
 {
     using System;
     using NUnit.Framework;
-    using PCGClassLibrary.Directions;
     using PCGClassLibrary.GameObjects;
     using PCGClassLibrary.InnerGameExceptions;
     using PCGClassLibrary.Managers;
