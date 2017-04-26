@@ -36,8 +36,8 @@
         {
             const int CAR_WIDTH = 9;
             const int CAR_HEIGHT = 4;
-            var xMaxValue = Console.WindowWidth - CAR_WIDTH;
-            var yMaxValue = Console.WindowHeight - CAR_HEIGHT;
+            var maxValueOfX = Console.WindowWidth - CAR_WIDTH;
+            var maxValueOfY = Console.WindowHeight - CAR_HEIGHT;
 
             var welcomeLineText = "WELCOME TO \"POLICE CHASING\" GAME";
             var gameDescriptionLines = new List<string>()
@@ -50,8 +50,8 @@
             this.consoleManager.PrintIntroText(this.gameSoundsManager, welcomeLineText, gameDescriptionLines);
             Thread.Sleep(2000);
 
-            var criminalGuy = new Criminal(xMaxValue, yMaxValue);
-            var policeCar = new Car(criminalGuy, xMaxValue, yMaxValue);
+            var criminalGuy = new Criminal(maxValueOfX, maxValueOfY);
+            var policeCar = new Car(criminalGuy, maxValueOfX, maxValueOfY);
             this.consoleManager.ReadCarInfo(policeCar);
             this.RunTheGame(policeCar, criminalGuy);
         }

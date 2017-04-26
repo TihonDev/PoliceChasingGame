@@ -15,8 +15,8 @@
         private string driverName;
         private ICriminal targetCriminal;
 
-        public Car(ICriminal target, int xMaxValue, int yMaxValue)
-            : base(xMaxValue, yMaxValue)
+        public Car(ICriminal target, int maxValueOfX, int maxValueOfY)
+            : base(maxValueOfX, maxValueOfY)
         {
             if (target == null)
             {
@@ -105,9 +105,9 @@
 
         public bool IsCriminalCaught()
         {
-            bool isCarOverTheCriminalX = this.XCoordinate - 1 <= this.targetCriminal.XCoordinate && this.targetCriminal.XCoordinate <= this.XCoordinate + this.Direction.CarForm[0].Length - 1;
-            bool isCarOverTheCriminalY = this.YCoordinate <= this.targetCriminal.YCoordinate && this.targetCriminal.YCoordinate <= this.YCoordinate + this.Direction.CarForm.Count - 1;
-            bool result = isCarOverTheCriminalX && isCarOverTheCriminalY;
+            bool isCriminalCaughtByX = this.XCoordinate - 1 <= this.targetCriminal.XCoordinate && this.targetCriminal.XCoordinate <= this.XCoordinate + this.Direction.CarForm[0].Length - 1;
+            bool isCriminalCaughtByY = this.YCoordinate <= this.targetCriminal.YCoordinate && this.targetCriminal.YCoordinate <= this.YCoordinate + this.Direction.CarForm.Count - 1;
+            bool result = isCriminalCaughtByX && isCriminalCaughtByY;
             return result;
         }
 

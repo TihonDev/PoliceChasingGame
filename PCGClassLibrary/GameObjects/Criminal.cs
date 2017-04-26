@@ -6,20 +6,20 @@
 
     public class Criminal : Position, ICriminal, IPosition
     {
-        private int xMaxValue;
-        private int yMaxValue;
-        private IList<string> body = new List<string>() 
-        { 
+        private int maxValueOfX;
+        private int maxValueOfY;
+        private IList<string> body = new List<string>()
+        {
             " @",
             "/|\\",
             "/ \\"
         };
 
-        public Criminal(int xMaxValue, int yMaxValue)
-            : base(xMaxValue, yMaxValue)
+        public Criminal(int maxValueOfX, int maxValueOfY)
+            : base(maxValueOfX, maxValueOfY)
         {
-            this.xMaxValue = xMaxValue;
-            this.yMaxValue = yMaxValue;
+            this.maxValueOfX = maxValueOfX;
+            this.maxValueOfY = maxValueOfY;
         }
 
         public IList<string> BodyFigure
@@ -34,8 +34,8 @@
                 throw new ArgumentNullException("coordinatesGenerator");
             }
 
-            int newXCoordinate = coordinatesGenerator.Next(2, this.xMaxValue - 1);
-            int newYCoordinate = coordinatesGenerator.Next(2, this.yMaxValue - 1);
+            int newXCoordinate = coordinatesGenerator.Next(2, this.maxValueOfX - 1);
+            int newYCoordinate = coordinatesGenerator.Next(2, this.maxValueOfY - 1);
             this.SetNewPosition(newXCoordinate, newYCoordinate);
         }
     }

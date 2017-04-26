@@ -35,9 +35,9 @@
         [TestCase(150, 151)]
         [TestCase(10, 0)]
         [TestCase(100, -1)]
-        public void XCoordinatePropertySetterShouldThrowCoordinateOutOfRangeExceptionIfValueIsNotInAllowableRange(int xMaxValue, int x)
+        public void XCoordinatePropertySetterShouldThrowCoordinateOutOfRangeExceptionIfValueIsNotInAllowableRange(int maxValueOfX, int x)
         {
-            this.testPosition = new Position(xMaxValue, 10);
+            this.testPosition = new Position(maxValueOfX, 10);
 
             Assert.Throws(typeof(CoordinateOutOfRangeException), () => { testPosition.XCoordinate = x; }, "XCoordinate setter does not work correctly.");
         }
@@ -46,9 +46,9 @@
         [TestCase(10, 0)]
         [TestCase(150, -1)]
         [TestCase(100, 101)]
-        public void YCoordinatePropertySetterShouldThrowCoordinateOutOfRangeExceeptionIfValueIsNotInAllowableRange(int yMaxValue, int y)
+        public void YCoordinatePropertySetterShouldThrowCoordinateOutOfRangeExceeptionIfValueIsNotInAllowableRange(int maxValueOfY, int y)
         {
-            this.testPosition = new Position(10, yMaxValue);
+            this.testPosition = new Position(10, maxValueOfY);
 
             Assert.Throws(typeof(CoordinateOutOfRangeException), () => { testPosition.YCoordinate = y; }, "YCoordinate setter does not work correctly.");
         }
