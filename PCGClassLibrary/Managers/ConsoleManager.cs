@@ -23,7 +23,7 @@
             {
                 throw new ArgumentNullException("gameSounds");
             }
-            
+
             this.PrintWelcomeLine(welcomeLine);
             gameSounds.PlaySound("typewriter.wav");
             this.PrintGameDescription(descriptionLines);
@@ -193,11 +193,11 @@
             Console.WriteLine("GAME OVER!");
 
             var playerPerformance = string.Empty;
-            if (playerScore > 10 && playerScore < 16)
+            if (10 < playerScore && playerScore < 16)
             {
                 playerPerformance = "Good job! ";
             }
-            else if (playerScore > 15)
+            else if (15 < playerScore)
             {
                 playerPerformance = "Excellent job! ";
             }
